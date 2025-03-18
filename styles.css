@@ -1,0 +1,54 @@
+body {
+  background-image: url("https://gileduardo.com.br/ifpr/dw/img/background.png");
+  color: #080484;
+  background-repeat: repeat-x;
+  background-size: cover;
+  font: 20px Arial, sans-serif;
+}
+.custom-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.custom-link:hover {
+  opacity: 0.8;
+}
+
+.cabecalho {
+  background-color: #080484;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.linha {
+  background-color: #a7d8e6;
+  width: 100%;
+  height: 5px;
+}
+
+.linha2 {
+  background-color: white;
+  width: 2px;
+  height: 35px;
+  margin: 1px 1px;
+  margin-left: 30px;
+}
+
+.subsection {
+  border-right: 2px solid white;
+  padding-right: 5px;
+  margin: 5px 5px;
+  position: relative;
+  top: 10px;
+}
+
+.news-list {
+  font-size: 24px;
+}
