@@ -25,6 +25,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100px;
+  scale: 1.15;
 }
 
 .linha {
