@@ -4,7 +4,7 @@ body {
 }
 .blur {
   background-size: cover;
-  background-image: url("https://c4.wallpaperflare.com/wallpaper/245/793/312/anime-hatsune-miku-vocaloid-anime-girls-wallpaper-preview.jpg");
+  background-image: url("https://avatars.githubusercontent.com/u/160740642?v=4");
   filter: blur(6px);
   z-index: -1;
   position: fixed;
