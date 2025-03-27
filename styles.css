@@ -18,7 +18,6 @@ body {
   align-items: center; /* Centraliza verticalmente */
   height: 100vh; /* Altura total da viewport */
   z-index: 1;
-  border: solid 1px black;
 }
 
 img {
