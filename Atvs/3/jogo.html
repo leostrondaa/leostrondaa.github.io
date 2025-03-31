@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <h1 id="tituloJogo">Jogo da Memória</h1>
+    </header>
+    
+    <div class="conteudo-jogo" id="tabuleiro"></div>
+    
+    <footer>
+        <p>Desenvolvido por você</p>
+    </footer>
+</body>
+</html>
+<script>
+    var temaEscolhido = localStorage.getItem('temaJogo') || 'carro';
+    document.getElementById('tituloJogo').textContent = 'Jogo da Memória - ' + temaEscolhido;
+    
+    // 2. Imagens para cada tema
+    var imagensCarro = [
+        'https://www.fiat.com.br/content/dam/fiat/nova-home/carrossel/pulse.webp',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3KRZAAuwIHvjTfZB0gL9Ji3PjaaYY0N7MxQ&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsXzx4P4mw_SLYgWGApnoGBliWD6BVw7ZK1g&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSMFMdBnOZYXYpWdrz0BtS-jNINigC8M5Rkg&s'
+    ];
+    
+    // 3. Criar 8 cartas (4 pares)
+    var todasImagens = imagensCarro.concat(imagensCarro); // Duplica as imagens
+    
+    // 4. Embaralhar as cartas (método simples)
+    todasImagens.sort(function() {
+        return 0.5 - Math.random();
+    });
+    
+    // 5. Criar as cartas na tela
+    var tabuleiro = document.getElementById('tabuleiro');
+    
+    for(var i = 0; i < todasImagens.length; i++) {
+        var carta = document.createElement('div');
+        carta.className = 'botao-imagem carta';
+        
+        carta.innerHTML = '<img src="card-back.jpg" data-frente="' + todasImagens[i] + '">';
+        
+        carta.onclick = function() {
+            var img = this.querySelector('img');
+            if(img.src.includes('card-back.jpg')) {
+                img.src = img.getAttribute('data-frente');
+            } else {
+                img.src = 'card-back.jpg';
+            }
+        };
+        
+        tabuleiro.appendChild(carta);
+    }
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <h1>Jogo da Memória</h1>
+    </header>
+    
+    <div class="conteudo">
+        <div class="botao-imagem" onclick="iniciarJogo('carro')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_oMrQx7KRpH9TMQkHlQQu45TpZ2GnXie1zw&s" alt="Carros">
+        </div>
+        
+        <div class="botao-imagem" onclick="iniciarJogo('moto')">
+            <img src="https://www.tecfil.com.br/wp-content/uploads/2021/12/TECFIL_SEO_IMAGENS_M7-1.jpg" alt="Motos">
+        </div>
+        
+        <div class="botao-imagem" onclick="iniciarJogo('barco')">
+            <img src="https://th.bing.com/th/id/OIP.HEFDxwa6AmeVoZLIBq8xEQHaE8?w=236&h=180&c=7&r=0&o=5&pid=1.7" alt="Barcos">
+        </div>
+    </div>
+    
+    <footer>
+        <p>Desenvolvido por você</p>
+    </footer>
+
+    <script>
+        function iniciarJogo(tema) {
+            // Salva o tema no localStorage e redireciona
+            localStorage.setItem('temaJogo', tema);
+            window.location.href = 'jogo.html';
+        }
+    </script>
+</body>
+</html>
