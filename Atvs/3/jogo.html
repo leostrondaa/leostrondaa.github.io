@@ -5,57 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Memória</title>
     <link rel="stylesheet" href="styles.css">
+  
 </head>
 <body>
-    <header class="cabecalho">
-        <h1 id="tituloJogo">Jogo da Memória</h1>
-    </header>
+        <h1 id="tituloJogo" class="texto-brilhante">PLAY NOW!!!!!</h1>
     
     <div class="conteudo-jogo" id="tabuleiro"></div>
     
     <footer>
-        <p>Desenvolvido por você</p>
+        <p>Desenvolvido por Leo</p>
     </footer>
+
+    <script>
+        const temas = {
+            carro: [
+                'https://www.fiat.com.br/content/dam/fiat/nova-home/carrossel/pulse.webp',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3KRZAAuwIHvjTfZB0gL9Ji3PjaaYY0N7MxQ&s',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsXzx4P4mw_SLYgWGApnoGBliWD6BVw7ZK1g&s',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSMFMdBnOZYXYpWdrz0BtS-jNINigC8M5Rkg&s'
+            ],
+            moto: [
+                'https://th.bing.com/th/id/OIP.Zt0tTSBvJz3my5ueFLh96gHaDG?w=282&h=146&c=7&r=0&o=5&pid=1.7',
+                'https://th.bing.com/th/id/OIP.rcgG5hLB4XxtgR-zvprpmAHaDx?w=350&h=178&c=7&r=0&o=5&pid=1.7',
+                'https://th.bing.com/th/id/OIP.LWmgQghrR5EBfDfGH6TReQHaDt?w=282&h=174&c=7&r=0&o=5&pid=1.7',
+                'https://th.bing.com/th/id/OIP.qondqpF3geW5-o08paqM-wHaEK?w=262&h=180&c=7&r=0&o=5&pid=1.7'
+            ],
+            barco: [
+                'https://th.bing.com/th/id/R.d79e71ddd36cb1eeed93d00a0bae9739?rik=TmYeLrQ2z1sRGA&pid=ImgRaw&r=0',
+                'https://p2.trrsf.com/image/fget/cf/1200/628/middle/images.terra.com/2013/10/10/lancharatinho16midiv1.jpg',
+                'https://images.boats.com/resize/1/42/11/6044211_20161212020538099_1_LARGE.jpg?t=1574441008000',
+                'https://th.bing.com/th/id/OIP.dy8BovUBCuEF8fYeP3UodAHaEE?w=1600&h=880&rs=1&pid=ImgDetMain'
+            ]
+        };
+
+        const tema = localStorage.getItem('temaJogo') || 'carro';
+        
+        const imagensTema = temas[tema]; 
+        const paresDeImagens = [...imagensTema, ...imagensTema];
+        
+        const tabuleiro = document.getElementById('tabuleiro');
+        
+        paresDeImagens.forEach((imagem) => {
+            const carta = document.createElement('div');
+            carta.className = 'carta';
+            carta.dataset.virada = 'false';
+            
+            carta.innerHTML = `
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0RBwX0xwH36KCiZZOUD9ZyjinNBjeCDXec-T_1rRvn9uQWRfDTQhVFrpF&s=10" alt="Verso" 
+                     data-frente="${imagem}">
+            `;
+            
+            carta.addEventListener('click', function() {
+                if (this.dataset.virada === 'false') {
+                    // Virar para frente
+                    this.querySelector('img').src = this.querySelector('img').dataset.frente;
+                    this.dataset.virada = 'true';
+                } else {
+                    // Virar para trás
+                    this.querySelector('img').src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0RBwX0xwH36KCiZZOUD9ZyjinNBjeCDXec-T_1rRvn9uQWRfDTQhVFrpF&s=10';
+                    this.dataset.virada = 'false';
+                }
+            });
+            
+            tabuleiro.appendChild(carta);
+        });
+    </script>
 </body>
 </html>
-<script>
-    var temaEscolhido = localStorage.getItem('temaJogo') || 'carro';
-    document.getElementById('tituloJogo').textContent = 'Jogo da Memória - ' + temaEscolhido;
-    
-    // 2. Imagens para cada tema
-    var imagensCarro = [
-        'https://www.fiat.com.br/content/dam/fiat/nova-home/carrossel/pulse.webp',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3KRZAAuwIHvjTfZB0gL9Ji3PjaaYY0N7MxQ&s',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsXzx4P4mw_SLYgWGApnoGBliWD6BVw7ZK1g&s',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSMFMdBnOZYXYpWdrz0BtS-jNINigC8M5Rkg&s'
-    ];
-    
-    // 3. Criar 8 cartas (4 pares)
-    var todasImagens = imagensCarro.concat(imagensCarro); // Duplica as imagens
-    
-    // 4. Embaralhar as cartas (método simples)
-    todasImagens.sort(function() {
-        return 0.5 - Math.random();
-    });
-    
-    // 5. Criar as cartas na tela
-    var tabuleiro = document.getElementById('tabuleiro');
-    
-    for(var i = 0; i < todasImagens.length; i++) {
-        var carta = document.createElement('div');
-        carta.className = 'botao-imagem carta';
-        
-        carta.innerHTML = '<img src="card-back.jpg" data-frente="' + todasImagens[i] + '">';
-        
-        carta.onclick = function() {
-            var img = this.querySelector('img');
-            if(img.src.includes('card-back.jpg')) {
-                img.src = img.getAttribute('data-frente');
-            } else {
-                img.src = 'card-back.jpg';
-            }
-        };
-        
-        tabuleiro.appendChild(carta);
-    }
-</script>
