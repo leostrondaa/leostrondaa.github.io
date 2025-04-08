@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            table.example {
+                width: 100%;
+                text-align: center;
+            }
+            td, th {
+                border: 2px solid black;
+            }
+            .hide { }
+
+            @media screen and (max-width: 800px) {
+                .hide {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Oculta Colunas de Acordo com o Tamanho da Tela</h2>
+        <table class="example">
+            <thead>
+                <th>ID</th>
+                <th>NOME</th>
+                <th class="hide">CPF</th>
+                <th class="hide">ENDEREÇO</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>GIL EDUARDO DE ANDRADE</td>
+                    <td class="hide">000.000.000.01</td>
+                    <td class="hide">Av. Oswald de Andrade, 411</td>    
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
