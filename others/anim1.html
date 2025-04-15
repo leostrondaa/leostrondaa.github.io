@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <style>
-            div {
-                width: 100px;
-                height: 100px;
-                border: 10px solid;
-                border-color: gainsboro;
-                background-color: black;
-                animation-name: cores;
-                animation-duration: 4s;
-            }
-            @keyframes cores {
-                from {
-                    background-color: black;
-                    border-color: gainsboro;
-                }
+  <head>
+    <title>Botões Dinâmicos</title>
+    <style>
+      .button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px 0;
+      }
 
-                to {
-                    background-color: gainsboro;
-                    border-color: black;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Animação CSS</h1>
-            <div></div>
-            <p>Ao final da animação, volta ao estilo original.</p>
-    </body>
+      .button:hover {
+        background-color: #45a049;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="button" id="mainButton">Mostrar Mais Botões</button>
+    <div id="buttonContainer" class="hidden">
+      <button class="button">Botão 1</button>
+      <button class="button">Botão 2</button>
+      <button class="button">Botão 3</button>
+    </div>
+
+    <script>
+      // Obtém os elementos
+      const mainButton = document.getElementById("mainButton");
+      const buttonContainer = document.getElementById("buttonContainer");
+
+      // Adiciona o evento de clique
+      mainButton.addEventListener("click", () => {
+        if (buttonContainer.classList.contains("hidden")) {
+          buttonContainer.classList.remove("hidden"); // Mostra os botões
+          mainButton.textContent = "Ocultar Botões"; // Muda o texto do botão principal
+        } else {
+          buttonContainer.classList.add("hidden"); // Esconde os botões
+          mainButton.textContent = "Mostrar Mais Botões"; // Volta ao texto original
+        }
+      });
+    </script>
+  </body>
 </html>

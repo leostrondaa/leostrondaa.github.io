@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle de Quadrados</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="controls">
+        <h2>Controles</h2>
+
+        <div class="control-group">
+          <label>Forma:</label>
+          <div class="options">
+            <button
+              id="quadrado"
+              class="active"
+              onclick="mudaForma('quadrado')"
+            >
+              Quadrado
+            </button>
+            <button id="redondo" onclick="mudaForma('redondo')">Redondo</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Cores:</label>
+          <div class="color-options">
+            <button
+              class="color red"
+              data-color="red"
+              onclick="mudaCor('red', this)"
+            ></button>
+            <button
+              class="color blue"
+              data-color="blue"
+              onclick="mudaCor('blue', this)"
+            ></button>
+            <button
+              class="color green"
+              data-color="green"
+              onclick="mudaCor('verde', this)"
+            ></button>
+            <button
+              class="color yellow"
+              data-color="yellow"
+              onclick="mudaCor('yellow', this)"
+            ></button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="size">Tamanho (px):</label>
+          <input
+            type="number"
+            id="size"
+            min="20"
+            max="200"
+            value="80"
+            oninput="mudaTamanho(this.value)"
+          />
+        </div>
+
+        <div class="control-group">
+          <h2>Alinhamento</h2>
+          <div class="options">
+            <div class="dropdown">
+              <button class="dropdown">ALIGN-ITENS</button>
+              <div class="dropdown-content">
+                <button id="left" onclick="mudaAlinhamento('left', this)">
+                  Esquerda
+                </button>
+                <button
+                  id="center"
+                  class="active"
+                  onclick="mudaAlinhamento('center', this)"
+                >
+                  centro
+                </button>
+                <button id="right" onclick="mudaAlinhamento('right', this)">
+                  direita
+                </button>
+                <button id="top" onclick="mudaAlinhamento('top', this)">
+                  cima
+                </button>
+                <button id="down" onclick="mudaAlinhamento('down', this)">
+                  baixo
+                </button>
+                <button id="stretch" onclick="mudaAlinhamento('stretch', this)">
+                  esticar
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="options">
+            <div class="dropdown">
+              <button class="dropdown">FLEX-DIRECTION</button>
+              <div class="dropdown-content">
+                <button onclick="changeFlexDirection('row', this)">row</button>
+                <button onclick="changeFlexDirection('row-reverse', this)">
+                  row-reverse
+                </button>
+                <button onclick="changeFlexDirection('column', this)">
+                  column
+                </button>
+                <button onclick="changeFlexDirection('column-reverse', this)">
+                  column-reverse
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="options">
+            <div class="dropdown">
+              <button class="dropdown">JUSTIFY-CONTENT</button>
+              <div class="dropdown-content">
+                <button onclick="changeJustifyContent('flex-start', this)">
+                  flex-start
+                </button>
+                <button onclick="changeJustifyContent('flex-end', this)">
+                  flex-end
+                </button>
+                <button onclick="changeJustifyContent('center', this)">
+                  center
+                </button>
+                <button onclick="changeJustifyContent('space-between', this)">
+                  space-between
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview">
+        <h2>Visualização</h2>
+        <div class="quadrado-container">
+          <div class="quadrado">1</div>
+          <div class="quadrado">2</div>
+          <div class="quadrado">3</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const quadrado = document.querySelectorAll(".quadrado");
+      const quadradoContainer = document.querySelector(".quadrado-container");
+
+      function mudaForma(forma) {
+        let i = 0;
+        while (i < quadrado.length) {
+          if (forma === "redondo") {
+            quadrado[i].classList.add("redondo");
+          } else {
+            quadrado[i].classList.remove("redondo");
+          }
+          i++;
+        }
+        toggleActive(event.currentTarget);
+      }
+
+      function mudaCor(color, btn) {
+        let i = 0;
+        while (i < quadrado.length) {
+          quadrado[i].style.backgroundColor = color;
+          i++;
+        }
+
+        const cores = document.querySelectorAll(".color");
+        let j = 0;
+        while (j < cores.length) {
+          cores[j].classList.remove("active");
+          j++;
+        }
+        btn.classList.add("active");
+      }
+
+      function mudaTamanho(size) {
+        let i = 0;
+        while (i < quadrado.length) {
+          quadrado[i].style.width = size + "px";
+          quadrado[i].style.height = size + "px";
+          i++;
+        }
+      }
+
+      function mudaAlinhamento(align, btn) {
+        quadradoContainer.className = "quadrado-container align-" + align;
+        toggleActive(btn);
+      }
+
+      function toggleActive(btn) {
+        const parent = btn.parentNode;
+        const botoes = parent.querySelectorAll("button");
+        let i = 0;
+        while (i < botoes.length) {
+          botoes[i].classList.remove("active");
+          i++;
+        }
+        btn.classList.add("active");
+      }
+
+      function changeFlexDirection(direction, btn) {
+        quadradoContainer.style.flexDirection = direction;
+        toggleActive(btn);
+      }
+
+      function changeJustifyContent(justify, btn) {
+        quadradoContainer.style.justifyContent = justify;
+        toggleActive(btn);
+      }
+    </script>
+  </body>
+</html>
