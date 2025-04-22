@@ -13,25 +13,25 @@ body {
   grid-area: container;
   display: flex;
   flex-direction: column;
-  padding: 100px;
+  margin-top: 100px;
+  margin-left: 100px;
 }
 
-.foto {
-  background-image: url("scotland_yard.png");
+img {
   grid-area: foto;
   width: 100%;
   height: 100%;
 }
 
 #senha {
-  width: 100%;
+  width: 80%;
   border-color: transparent;
   box-shadow: -1px 1px 1px rgba(0, 0, 1, 0.5);
   padding: 10px;
   margin: 10px 0px;
 }
 #email {
-  width: 100%;
+  width: 80%;
   border-color: transparent;
   box-shadow: -1px 1px 1px rgba(0, 0, 1, 0.5);
   margin: 10px 0px;
@@ -62,7 +62,6 @@ body {
   background-color: blue;
 }
 a {
-  display: inline-block;
   margin-left: 140px;
   color: orange;
   text-decoration: none;
@@ -74,6 +73,8 @@ hr {
   background-color: darkslateblue;
   height: 1px;
   margin-top: 35px;
+  width: 84%;
+  margin-right: 120px;
 }
 svg {
   padding: 30px;
@@ -82,6 +83,11 @@ svg {
 
 @media screen and (max-width: 800px) {
   body {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "container";
+  }
+  a {
+    margin-left: 10px;
   }
 }
