@@ -2,6 +2,42 @@
   width: 45px;
   height: 50px;
 }
+
+@keyframes moverAlien {
+  0% {
+    top: -50px; 
+      left:50%;
+  }
+  100% {
+    top: 250px; 
+      left:50%;
+  }
+}
+
+@keyframes moverAlienLados {
+  25%{
+      left: 30%;
+  }50% {
+    left: 30%;
+  }75%{
+      left: 70%;
+  }
+  
+   100%
+    {
+        left: 50%
+    }
+}
+
+
+.img2 {
+  width: 45px;
+  height: 50px;
+  position: absolute;
+    
+  animation: moverAlien 2s forwards,
+             moverAlienLados 5s infinite 2s;
+} 
 .imgNave {
   width: 140px;
   height: 150px;
