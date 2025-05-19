@@ -14,14 +14,24 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-4 ">
+      <div class="col-3">
         <div class="card min-vh-100 "></div>
       </div>
       <div class="col-8 d-flex justify-content-center align-items-center flex-column ">
         <div id="foto"></div>
         <div class="fs-1 text-white">Leonardo</div>
         <div class="fs-3">INFO23</div>
+        <button id="playButton" class="btn btn-primary mt-4">Atividades</button>
       </div>
     </div>
   </body>
+
+  <audio id="audioEntrada" src="/HomePage/Tung.mp3" preload="auto"></audio>
 </html>
+
+    <script>
+      document.getElementById('playButton').addEventListener('click', function() {
+          var audio = document.getElementById('audioEntrada');
+          audio.play(); 
+      });
+    </script>
