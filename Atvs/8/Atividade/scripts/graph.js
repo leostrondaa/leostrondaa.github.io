@@ -35,9 +35,6 @@ function drawChart() {
   chart.draw(data, options);
 }
 
-function updateChart() {
-  google.charts.setOnLoadCallback(drawChart);
-}
 
 document.addEventListener('DOMContentLoaded', function () {
   drawChart();
