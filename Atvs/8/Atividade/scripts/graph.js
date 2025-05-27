@@ -17,11 +17,11 @@ function drawChart() {
     title: "Total de Registros",
     legend: { position: "none" },
     hAxis: {
-      title: "Quantidade",
-      minValue: 0,
+      title: "Categoria", 
     },
     vAxis: {
-      title: "Categoria",
+      title: "Quantidade", 
+      minValue: 0,
     },
     animation: {
       duration: 1000,
@@ -29,12 +29,11 @@ function drawChart() {
     },
   };
 
-  var chart = new google.visualization.BarChart(
+  var chart = new google.visualization.ColumnChart(
     document.getElementById("barchart")
   );
   chart.draw(data, options);
 }
-
 
 document.addEventListener('DOMContentLoaded', function () {
   drawChart();

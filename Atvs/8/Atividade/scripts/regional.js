@@ -32,5 +32,5 @@ function addRegio() {
   select.appendChild(op)
 
   form.reset()
-  updateChart()
+  drawChart()
 }
