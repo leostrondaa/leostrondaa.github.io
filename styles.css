@@ -18,6 +18,7 @@ body {
     border: 2px solid #ffe396; 
     border-radius: 10px; 
     padding: 8px 12px; 
+    margin: 2px;
     display: inline-block; 
     font-weight: bold;
     transition: 0,3s; 
