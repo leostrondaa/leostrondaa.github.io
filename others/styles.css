@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  color: black;
+  font-family: Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr 50px;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+header {
+  grid-area: header;
+  background: linear-gradient(to bottom, lightblue, transparent);
+  color: black;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#menuButton {
+  display: block;
+  color: black;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: fixed;
+  right: 30px;
+  top: 30px;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: -250px;
+  width: 200px;
+  height: 100%;
+  background-color: #444;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+nav.active {
+  left: 0;
+}
+
+body.menu-open {
+  margin-left: 240px;
+  overflow: hidden;
+}
+
+nav ol {
+  margin: 20px 20px;
+}
+
+nav ol li {
+  margin: 20px 0;
+}
+
+nav ol li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+  justify-content: center;
+  text-align: center;
+}
+
+nav ol li a:hover {
+  color: black;
+}
+
+main {
+  grid-area: main;
+  padding: 20px;
+  background-color: transparent;
+}
+
+footer {
+  grid-area: footer;
+  background: linear-gradient(to top, lightblue, transparent);
+  text-align: center;
+}
+
+* {
+  font-size: 16px;
+}
+
+@media (max-width: 800px) {
+  * {
+    font-size: 14px;
+  }
+    .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    
+    .container img {
+        margin: 0 auto;
+        grid-row: auto;
+    }
+    
+    .blur {
+        display: none;
+    }
+    
+    .content {
+        margin-top: 20px;
+    }
+}
+
+.blur {
+  background-size: cover;
+  background-image: url("https://avatars.githubusercontent.com/u/160740642?v=4");
+  filter: blur(8px);
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  scale: 1.05;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+img {
+  border: 1px solid #333;
+  border-radius: 1000px;
+  box-shadow: 0 0 10px rgba(0, 0, 1, 0.5); /* Sombra */
+  margin: 0px 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  max-width: 97%;
+  width: 100%;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.container img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}

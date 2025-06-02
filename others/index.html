@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Página Pessoal</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Rodrigo's Faro</h1>
+            <button id="menuButton">☰</button>
+        </header>
+        <nav id="menuLateral">
+            <ol>
+                <li>
+                    <a
+                    href="https://leostrondaa.github.io/Atvs/1/alunos.html"
+                    target="_blank"
+                    >Atividade </a
+                    >
+        </li>
+        <li>
+            <a
+            href="https://leostrondaa.github.io/Atvs/2/index.html"
+            target="_blank"
+            >Atividade </a
+            >
+        </li>
+        <li>
+            <a
+            href="https://leostrondaa.github.io/Atvs/3/index.html"
+            target="_blank"
+            >Atividade </a
+            >
+        </li>
+        <li>
+            <a
+            href="https://leostrondaa.github.io/Atvs/4/index.html"
+            target="_blank"
+            >Atividade </a
+            >
+        </li>
+        <li>
+            <a
+            href="https://leostrondaa.github.io/Atvs/5/index.html"
+            target="_blank"
+            >Atividade </a
+            >
+        </li>
+        <li>
+            <a
+            href="https://leostrondaa.github.io/Atvs/6/index.html"
+            target="_blank"
+            >Atividade </a
+            >
+        </li>
+        <li>
+            <a
+            href="https://leostrondaa.github.io/Atvs/7/index.html"
+            target="_blank"
+            >Atividade </a
+            >
+        </li>
+        <li>
+            <a
+            href="https://leostrondaa.github.io/Atvs/8/index.html"
+            target="_blank"
+            >Atividade </a
+            >
+        </li>
+        <li>
+            <a
+            href="https://leostrondaa.github.io/Atvs/9/index.html"
+            target="_blank"
+            >Atividade </a
+            >
+        </li>
+      </ol>
+    </nav>
+    <main>
+        <section>
+            <div class="blur"></div>
+            <div class="container">
+                <img src="https://avatars.githubusercontent.com/u/160740642?v=4" alt="Leonardo Henz" />
+                
+                <div class="content">
+                    <h1>Leonardo Henz</h1>
+                    <div class="info">INFO23</div>
+                    <small>Sou bonito, sou gostoso, jogo bola e danço.</small>
+                </div>
+    </section>
+</main>
+<footer>
+    <p>By leo</p>
+</footer>
+</body>
+</html>
+<script>
+    document.getElementById("menuButton").addEventListener("click", function () {
+        const nav =document.getElementById("menuLateral");
+        const body = document.body;
+        nav.classList.toggle("active");
+    body.classList.toggle("menu-open");
+});
+</script>
