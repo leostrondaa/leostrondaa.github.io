@@ -6,19 +6,19 @@ function ex03() {
         .map(num => parseFloat(num))
     
     const resultado = resolve03(numeros)
-    const saida = document.getElementById("div_output");
+    const saida = document.getElementById("div_output")
 
     if (resultado == "Par") {
-        saida.textContent = "par"; 
+        saida.textContent = "par" 
     } else {
-        saida.textContent = "impar";
+        saida.textContent = "impar"
     }
     form.reset()
 }
 
 function resolve03(numeros) {
     return numeros.map(function(num) {
-        return numeros.map((num) => (isEven(num) ? "Par" : "Ímpar"));
+        return numeros.map((num) => (isEven(num) ? "Par" : "Ímpar"))
     })
 }
 
