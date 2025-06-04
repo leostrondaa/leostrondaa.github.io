@@ -25,6 +25,7 @@
 <div class="button-row">
   <button class="btn" on:click={() => digito("0")}>0</button>
   <button class="btn" on:click={() => digito("/")}>/</button>
+  <button class="btn operador" on:click={() => digito("=")}>=</button>
   <button class="btn C" on:click={clear}>C</button>
 </div>
 
