@@ -23,6 +23,17 @@ function mostrarAtividades(baseURL, inicio, fim) {
     const li = document.createElement('li');
     const a = document.createElement('a');
 
+    if (i == 10) {
+      a.href = `${baseURL}/${i}/meu-app/public/index.html`;
+      a.target = '_blank';
+      a.textContent = `Atividade ${i}`;
+      a.classList.add('link-atividade');
+
+      li.appendChild(a);
+      lista.appendChild(li);
+
+      return;
+    }
     a.href = `${baseURL}/${i}/index.html`;
     a.target = '_blank';
     a.textContent = `Atividade ${i}`;
