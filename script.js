@@ -24,7 +24,7 @@ function mostrarAtividades(baseURL, inicio, fim) {
     const a = document.createElement('a');
 
     if (i == 10) {
-      a.href = `${baseURL}/${i}/meu-app/public/index.html`;
+      a.href = `https://leostrondaa.github.io/meu-app/`;
       a.target = '_blank';
       a.textContent = `Atividade ${i}`;
       a.classList.add('link-atividade');
