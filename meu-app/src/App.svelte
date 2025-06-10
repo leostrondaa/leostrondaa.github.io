@@ -110,22 +110,7 @@
     justify-content: center;
     padding: 20px;
   }
-
-  .input-text {
-    width: 65%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: right;
-    font-size: 1.5em;
-  }
-
   .cor {
     background-color: burlywood;
-  }
-  input {
-    width: 245px;
-    height: 50px;
   }
 </style>

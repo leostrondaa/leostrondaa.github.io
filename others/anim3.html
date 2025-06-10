@@ -1,27 +1,412 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <style>
-            div {
-                width: 120px;
-                height: 120px;
-                background-color: gainsboro;
-                position: relative;
-                animation: movimento 4s;
-                animation-delay: 1s;
-                animation-fill-mode: forwards;
-                /* animation-fill-mode: backwards; */
-                /* animation-fill-mode: both; */
-            }
-            @keyframes movimento {
-                from {top: 0px; background-color: orange;}
-                to {top: 120px; background-color: salmon;}
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Animação CSS</h1>
-        <div></div>
-    </body>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Site de Treino JS/HTML</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Estilos básicos para deixar o HTML mais agradável */
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7f6;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        background-color: #ffffff;
+        padding: 20px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      header h1 {
+        color: #2c3e50;
+        margin: 0;
+        font-size: 2.5em;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0 0;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #3498db;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: #2980b9;
+      }
+
+      .hero {
+        background-color: #3498db;
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+      }
+
+      .hero h2 {
+        font-size: 3em;
+        margin-bottom: 15px;
+      }
+
+      .hero p {
+        font-size: 1.2em;
+        max-width: 800px;
+        margin: 0 auto 30px auto;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: #2ecc71;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background-color: #27ae60;
+      }
+
+      .section-title {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 40px;
+        font-size: 2em;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #3498db;
+        margin: 10px auto 0 auto;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
+      }
+
+      .card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        padding: 25px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+      }
+
+      .card h3 {
+        color: #3498db;
+        margin-top: 0;
+        font-size: 1.5em;
+      }
+
+      .card p {
+        font-size: 0.95em;
+        color: #555;
+      }
+
+      .item-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 50px;
+      }
+
+      .item-list li {
+        background-color: #ffffff;
+        margin-bottom: 15px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .item-list li strong {
+        color: #2c3e50;
+      }
+
+      .item-list li span {
+        color: #7f8c8d;
+        font-size: 0.9em;
+      }
+
+      .item-list li .action-button {
+        background-color: #f39c12;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .item-list li .action-button:hover {
+        background-color: #e67e22;
+      }
+
+      footer {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 50px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 0.9em;
+      }
+
+      /* Estilos para o formulário */
+      .form-section {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        margin-bottom: 50px;
+      }
+
+      .form-section h3 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 25px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #555;
+      }
+
+      .form-group input[type='text'],
+      .form-group input[type='email'],
+      .form-group textarea {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1em;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .submit-button {
+        display: block;
+        width: 100%;
+        background-color: #3498db;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .submit-button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Meu Projeto de Treino</h1>
+        <nav>
+          <ul>
+            <li><a href="#" class="nav-link" data-section="home">Início</a></li>
+            <li><a href="#" class="nav-link" data-section="about">Sobre</a></li>
+            <li>
+              <a href="#" class="nav-link" data-section="services">Serviços</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" data-section="contact">Contato</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" id="hero-section">
+        <h2>Bem-vindo ao Nosso Treino!</h2>
+        <p>
+          Este é um template HTML bonito e funcional, perfeito para você
+          praticar suas habilidades em JavaScript e manipulação do DOM.
+        </p>
+        <a href="#services-section" class="cta-button">Ver Serviços</a>
+      </section>
+
+      <section id="about-section">
+        <h2 class="section-title">Sobre Nós</h2>
+        <div class="cards-grid">
+          <div class="card">
+            <h3>Missão</h3>
+            <p>
+              Nossa missão é fornecer um ambiente de treino robusto e inspirador
+              para desenvolvedores.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Visão</h3>
+            <p>
+              Ser a plataforma de referência para quem busca aprimorar suas
+              habilidades em front-end.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Valores</h3>
+            <p>
+              Inovação, Qualidade, Acessibilidade e Comunidade são nossos
+              pilares fundamentais.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="services-section">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <ul class="item-list" id="service-list">
+          <li data-service-id="1" data-price="99.90">
+            <strong>Desenvolvimento Web</strong>
+            <span>Criação de sites responsivos e modernos.</span>
+            <button class="action-button">Detalhes</button>
+          </li>
+          <li data-service-id="2" data-price="149.90">
+            <strong>Consultoria UI/UX</strong>
+            <span
+              >Otimização da experiência do usuário e design de interface.</span
+            >
+            <button class="action-button">Detalhes</button>
+          </li>
+          <li data-service-id="3" data-price="79.90">
+            <strong>Manutenção de Sistemas</strong>
+            <span>Suporte contínuo e atualizações para suas aplicações.</span>
+            <button class="action-button">Detalhes</button>
+          </li>
+          <li data-service-id="4" data-price="119.90">
+            <strong>Performance Web</strong>
+            <span>Melhoria da velocidade e eficiência do seu site.</span>
+            <button class="action-button">Detalhes</button>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact-section" class="form-section">
+        <h2 class="section-title">Entre em Contato</h2>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Nome:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Seu nome completo"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="seu.email@example.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem:</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Sua mensagem..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-button">Enviar Mensagem</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Meu Projeto de Treino. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
 </html>
+
+<script>
+  const buttons = document.querySelectorAll('button');
+  const links = document.querySelectorAll('.nav-link');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      buttons.forEach((item) => {
+        item.style.backgroundColor = 'yellow';
+        item.style.border = '10px solid black';
+        item.style.borderRadius = '10px';
+      });
+    });
+  });
+
+  const newLinks = Array.from(links).map((link) => {
+    Array.from(links).forEach((link) => {
+      link.style.backgroundColor = 'black';
+    });
+    return link;
+  });
+
+  console.log(newLinks);
+</script>

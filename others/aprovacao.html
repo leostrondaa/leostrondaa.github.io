@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Botões Dinâmicos</title>
+  </head>
+  <body>
+    <script>
+      const alunos = [
+        { Nome: 'Pedro', Idade: 20, Nota: 10 },
+        { Nome: 'Raphael', Idade: 19, Nota: 6 },
+        { Nome: 'Bruno', Idade: 17, Nota: 7.5 },
+      ];
+
+      const aprovacao = (listaAlunos, notaMin) => {
+        for (let i = 0; i < alunos.length; i++) {
+          alunos[i].Nota >= notaMin
+            ? (alunos[i].Aprovacao = 'Aprovado')
+            : (alunos[i].Aprovacao = 'Reprovado');
+        }
+        return alunos;
+      };
+
+      console.log(aprovacao(alunos, 7));
+    </script>
+  </body>
+</html>
