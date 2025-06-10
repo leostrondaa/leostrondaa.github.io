@@ -3,41 +3,628 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Interativo: Fundamentos de JavaScript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
     />
-    <title>Página Pessoal</title>
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Chosen Palette: Slate & Amber -->
+    <!-- Application Structure Plan: A single-page application with a fixed sidebar navigation. This structure was chosen to provide persistent, easy access to all key topics from the source report. It allows users to non-linearly jump between concepts like "Variáveis", "Tipos de Dados", and "Assincronismo" without losing context. Each topic is loaded into a main content area, creating a focused learning environment. This is more user-friendly than a long, scrolling page as it breaks down the dense information into manageable, self-contained sections, facilitating both quick reference and in-depth study. -->
+    <!-- Visualization & Content Choices: 
+        - Variables (var/let/const): Goal -> Compare. Method -> Interactive card layout with code examples. Interaction -> Clicking on a card reveals detailed behavior and scope rules. Justification -> Direct comparison is more effective than plain text. Library -> Vanilla JS for tab switching.
+        - Data Types: Goal -> Inform & Explore. Method -> A grid of clickable cards. For Boolean, an interactive "Truthy/Falsy" checker is included. Interaction -> Users can test values to see their boolean equivalent. Justification -> Active participation reinforces learning. Library -> Vanilla JS.
+        - Scope Comparison: Goal -> Visualize abstract concept. Method -> A vertical bar chart comparing the "reach" of var, let, and const (Global, Function, Block). Interaction -> Tooltips on hover provide context. Justification -> A chart makes the abstract concept of scope tangible and easier to grasp. Library -> Chart.js.
+        - Async (Callbacks vs Promises vs Async/Await): Goal -> Show evolution & readability. Method -> Tabbed code viewer. Interaction -> Users switch tabs to see the same logic implemented in three different ways. Justification -> Side-by-side comparison clearly highlights the syntactic and structural improvements. Library -> Vanilla JS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .content-card {
+        transition: all 0.3s ease-in-out;
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      .content-card.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .nav-link {
+        transition: all 0.2s ease;
+      }
+      .nav-link.active {
+        background-color: #f59e0b;
+        color: #1e293b;
+        font-weight: 600;
+      }
+      .nav-link:not(.active):hover {
+        background-color: #334155;
+      }
+      .code-block {
+        background-color: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-family: 'Courier New', Courier, monospace;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 300px;
+        max-height: 400px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 350px;
+        }
+      }
+    </style>
   </head>
-
-  <body>
-    <div class="row">
-      <!-- fundo branco -->
-      <div
-        id="colSecundaria"
-        class="align-items-center d-flex justify-content-center"
+  <body class="bg-slate-900 text-slate-200">
+    <div class="flex flex-col md:flex-row min-h-screen">
+      <aside
+        class="w-full md:w-64 bg-slate-800 p-4 md:p-6 shadow-lg md:sticky md:top-0 md:h-screen"
       >
-        <div id="card" class="d-none card rounded-5 max-vh-100">
-          <ol id="lista" class="m-5 list-unstyled"></ol>
+        <h1 class="text-2xl font-bold text-amber-400 mb-6">JS Fundamentos</h1>
+        <nav
+          id="navigation"
+          class="flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible pb-4 md:pb-0"
+        >
+          <a
+            href="#intro"
+            class="nav-link active text-slate-300 rounded-md px-4 py-2 mb-0 md:mb-2 mr-2 md:mr-0 flex-shrink-0"
+            >Introdução</a
+          >
+          <a
+            href="#variables"
+            class="nav-link text-slate-300 rounded-md px-4 py-2 mb-0 md:mb-2 mr-2 md:mr-0 flex-shrink-0"
+            >Variáveis e Escopo</a
+          >
+          <a
+            href="#types"
+            class="nav-link text-slate-300 rounded-md px-4 py-2 mb-0 md:mb-2 mr-2 md:mr-0 flex-shrink-0"
+            >Tipos de Dados</a
+          >
+          <a
+            href="#functions"
+            class="nav-link text-slate-300 rounded-md px-4 py-2 mb-0 md:mb-2 mr-2 md:mr-0 flex-shrink-0"
+            >Funções</a
+          >
+          <a
+            href="#destructuring"
+            class="nav-link text-slate-300 rounded-md px-4 py-2 mb-0 md:mb-2 mr-2 md:mr-0 flex-shrink-0"
+            >Desestruturação</a
+          >
+          <a
+            href="#async"
+            class="nav-link text-slate-300 rounded-md px-4 py-2 mb-0 md:mb-2 mr-2 md:mr-0 flex-shrink-0"
+            >Assincronismo</a
+          >
+        </nav>
+      </aside>
+
+      <main class="flex-1 p-6 md:p-10">
+        <div id="intro" class="content-card active">
+          <h2 class="text-3xl font-bold text-amber-400 mb-4">
+            Bem-vindo à Exploração Interativa do JavaScript
+          </h2>
+          <p class="text-lg text-slate-400 mb-6">
+            Esta aplicação transforma o conteúdo denso de um relatório sobre
+            JavaScript numa experiência de aprendizagem dinâmica. Em vez de uma
+            leitura linear, aqui pode navegar por tópicos essenciais, interagir
+            com exemplos de código e visualizar conceitos complexos. O objetivo
+            é facilitar a compreensão dos pilares da linguagem, desde a
+            declaração de variáveis até à programação assíncrona. Clique nos
+            tópicos à esquerda para começar a sua jornada.
+          </p>
+          <div class="bg-slate-800 p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold text-amber-400 mb-3">
+              Evolução do JavaScript
+            </h3>
+            <p class="text-slate-300">
+              Criado em 1995, o JavaScript evoluiu de um simples script para
+              interatividade em páginas web para uma linguagem onipresente,
+              capaz de operar tanto no
+              <strong class="text-amber-300">frontend</strong> (navegador)
+              quanto no
+              <strong class="text-amber-300">backend</strong> (servidor, com
+              Node.js). Esta versatilidade, conhecida como "JavaScript
+              Everywhere", solidificou a sua posição como uma das tecnologias
+              mais importantes no desenvolvimento de software moderno.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <!-- fundo perfil -->
-      <div
-        id="colPrimaria"
-        class="col-12 d-flex justify-content-center align-items-center flex-column min-vh-100"
-      >
-        <div id="foto"></div>
-        <div class="fs-1 text-white">Leonardo</div>
-        <div class="fs-3">INFO23</div>
-        <button id="atvButton" class="btn btn-primary mt-4">Atividades</button>
-      </div>
+        <div id="variables" class="content-card">
+          <h2 class="text-3xl font-bold text-amber-400 mb-4">
+            Variáveis e Escopo
+          </h2>
+          <p class="text-lg text-slate-400 mb-6">
+            A forma como declaramos e acedemos a dados é fundamental em
+            JavaScript. A introdução do `let` e `const` no ES6 (ECMAScript 2015)
+            resolveu muitas das armadilhas do `var`, promovendo um código mais
+            seguro e previsível. Explore abaixo as diferenças cruciais entre
+            eles.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div
+              id="card-var"
+              class="variable-card-content bg-slate-800 p-6 rounded-lg border-2 border-transparent cursor-pointer hover:border-amber-400"
+            >
+              <h3 class="text-xl font-bold text-cyan-400">var</h3>
+              <p class="text-slate-400 mt-2">
+                Possui escopo de função ou global. Sofre "hoisting" (içamento),
+                o que pode levar a comportamentos inesperados. Pode ser
+                redeclarada e reatribuída.
+              </p>
+            </div>
+            <div
+              id="card-let"
+              class="variable-card-content bg-slate-800 p-6 rounded-lg border-2 border-transparent cursor-pointer hover:border-amber-400"
+            >
+              <h3 class="text-xl font-bold text-fuchsia-400">let</h3>
+              <p class="text-slate-400 mt-2">
+                Possui escopo de bloco. Não pode ser redeclarada no mesmo
+                escopo, mas pode ser reatribuída. É a escolha moderna para
+                variáveis que mudam de valor.
+              </p>
+            </div>
+            <div
+              id="card-const"
+              class="variable-card-content bg-slate-800 p-6 rounded-lg border-2 border-transparent cursor-pointer hover:border-amber-400"
+            >
+              <h3 class="text-xl font-bold text-green-400">const</h3>
+              <p class="text-slate-400 mt-2">
+                Possui escopo de bloco, assim como o `let`. Deve ser
+                inicializada na declaração e não pode ser reatribuída. Ideal
+                para valores constantes.
+              </p>
+            </div>
+          </div>
+
+          <div id="variable-details" class="bg-slate-800 p-6 rounded-lg">
+            <p class="text-slate-400">
+              Clique num dos cartões acima para ver exemplos de código e
+              detalhes sobre o seu comportamento.
+            </p>
+          </div>
+
+          <h3 class="text-2xl font-semibold text-amber-400 mt-10 mb-4">
+            Visualização de Escopo
+          </h3>
+          <p class="text-slate-400 mb-6">
+            O gráfico abaixo ilustra o "alcance" de cada tipo de declaração. O
+            escopo de bloco (`let` e `const`) é mais restrito e seguro,
+            prevenindo que variáveis "vazem" para fora de laços (`for`) ou
+            condicionais (`if`), um problema comum com `var`.
+          </p>
+          <div class="bg-slate-800 p-4 rounded-lg">
+            <div class="chart-container">
+              <canvas id="scopeChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div id="types" class="content-card">
+          <h2 class="text-3xl font-bold text-amber-400 mb-4">Tipos de Dados</h2>
+          <p class="text-lg text-slate-400 mb-6">
+            JavaScript é uma linguagem com tipagem dinâmica e fraca, o que
+            significa que o tipo de uma variável pode mudar e a linguagem tenta
+            "adivinhar" o tipo em operações. Entender os tipos primitivos e os
+            objetos é essencial.
+          </p>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-slate-800 p-4 rounded-lg">
+              <strong class="text-amber-300">Number:</strong> Para inteiros e
+              pontos flutuantes.
+            </div>
+            <div class="bg-slate-800 p-4 rounded-lg">
+              <strong class="text-amber-300">String:</strong> Sequências de
+              caracteres.
+            </div>
+            <div class="bg-slate-800 p-4 rounded-lg">
+              <strong class="text-amber-300">Boolean:</strong> `true` ou
+              `false`.
+            </div>
+            <div class="bg-slate-800 p-4 rounded-lg">
+              <strong class="text-amber-300">Object:</strong> Coleção de pares
+              chave-valor.
+            </div>
+            <div class="bg-slate-800 p-4 rounded-lg">
+              <strong class="text-amber-300">Array:</strong> Um tipo especial de
+              objeto para listas ordenadas.
+            </div>
+            <div class="bg-slate-800 p-4 rounded-lg">
+              <strong class="text-amber-300">Null:</strong> Ausência intencional
+              de valor.
+            </div>
+            <div class="bg-slate-800 p-4 rounded-lg">
+              <strong class="text-amber-300">Undefined:</strong> Variável
+              declarada mas não inicializada.
+            </div>
+          </div>
+          <h3 class="text-2xl font-semibold text-amber-400 mt-10 mb-4">
+            Playground: Truthy & Falsy
+          </h3>
+          <p class="text-slate-400 mb-6">
+            Em JavaScript, valores que não são booleanos podem comportar-se como
+            `true` (truthy) ou `false` (falsy) em contextos lógicos. Insira um
+            valor para ver como ele é avaliado. Valores como `0`, `""` (string
+            vazia), `null`, `undefined` e `NaN` são "falsy". Quase todo o resto
+            é "truthy".
+          </p>
+          <div class="bg-slate-800 p-6 rounded-lg">
+            <input
+              id="truthy-input"
+              type="text"
+              class="w-full p-2 rounded bg-slate-700 text-slate-200 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-amber-400"
+              placeholder="Digite um valor (ex: 'hello', 0, [], {})"
+            />
+            <p class="mt-4 text-lg">
+              Resultado Booleano:
+              <strong id="truthy-output" class="font-bold"></strong>
+            </p>
+          </div>
+        </div>
+
+        <div id="functions" class="content-card">
+          <h2 class="text-3xl font-bold text-amber-400 mb-4">Funções</h2>
+          <p class="text-lg text-slate-400 mb-6">
+            Funções são blocos de código reutilizáveis e um dos pilares do
+            JavaScript. Elas podem ser declaradas de várias formas, cada uma com
+            sua sintaxe e comportamento específicos, especialmente no que diz
+            respeito ao `this`.
+          </p>
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-xl font-semibold text-amber-300 mb-2">
+                Declaração de Função (Padrão)
+              </h3>
+              <p class="text-slate-400 mb-3">
+                A forma clássica de criar uma função, que sofre "hoisting".
+              </p>
+              <div class="code-block">
+                function soma(a, b) {\n return a + b;\n}
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-amber-300 mb-2">
+                Expressão de Função (Anônima)
+              </h3>
+              <p class="text-slate-400 mb-3">
+                Uma função atribuída a uma variável. Não sofre "hoisting".
+              </p>
+              <div class="code-block">
+                const soma = function(a, b) {\n return a + b;\n};
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-amber-300 mb-2">
+                Função Seta (Arrow Function)
+              </h3>
+              <p class="text-slate-400 mb-3">
+                Sintaxe mais concisa introduzida no ES6. Não possui seu próprio
+                `this`, herdando-o do contexto ao redor, o que a torna ideal
+                para callbacks.
+              </p>
+              <div class="code-block">const soma = (a, b) => a + b;</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="destructuring" class="content-card">
+          <h2 class="text-3xl font-bold text-amber-400 mb-4">
+            Desestruturação (Destructuring)
+          </h2>
+          <p class="text-lg text-slate-400 mb-6">
+            Introduzida no ES6, a desestruturação é uma forma conveniente de
+            extrair dados de arrays ou objetos e atribuí-los a variáveis. Ela
+            torna o código mais limpo e legível ao reduzir a necessidade de
+            acesso repetitivo a propriedades.
+          </p>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-amber-300 mb-2">
+                Desestruturação de Objetos
+              </h3>
+              <p class="text-slate-400 mb-3">
+                Extrai valores usando as chaves do objeto.
+              </p>
+              <div class="code-block">
+                const pessoa = { nome: 'Ana', idade: 25 };\n\nconst { nome,
+                idade } = pessoa;\n\nconsole.log(nome); //
+                'Ana'\nconsole.log(idade); // 25
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-amber-300 mb-2">
+                Desestruturação de Arrays
+              </h3>
+              <p class="text-slate-400 mb-3">
+                Extrai valores com base na sua posição no array.
+              </p>
+              <div class="code-block">
+                const numeros = [10, 20, 30];\n\nconst [primeiro, segundo] =
+                numeros;\n\nconsole.log(primeiro); // 10\nconsole.log(segundo);
+                // 20
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="async" class="content-card">
+          <h2 class="text-3xl font-bold text-amber-400 mb-4">
+            Programação Assíncrona
+          </h2>
+          <p class="text-lg text-slate-400 mb-6">
+            O JavaScript executa tarefas numa única thread. Para evitar que
+            operações demoradas (como pedidos a um servidor) bloqueiem a
+            aplicação, usamos programação assíncrona. Explore a evolução das
+            técnicas, desde os Callbacks até o moderno Async/Await.
+          </p>
+
+          <div class="bg-slate-800 rounded-lg">
+            <div class="flex border-b border-slate-700">
+              <button
+                id="btn-callback"
+                class="async-tab-btn flex-1 p-3 font-semibold text-slate-300 bg-slate-800 rounded-tl-lg hover:bg-slate-700"
+              >
+                Callbacks
+              </button>
+              <button
+                id="btn-promise"
+                class="async-tab-btn flex-1 p-3 font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700"
+              >
+                Promises
+              </button>
+              <button
+                id="btn-async-await"
+                class="async-tab-btn flex-1 p-3 font-semibold text-slate-300 bg-slate-800 rounded-tr-lg hover:bg-slate-700"
+              >
+                Async/Await
+              </button>
+            </div>
+            <div id="async-content" class="p-6">
+              <p class="text-slate-400">
+                Selecione uma técnica para ver o exemplo de código.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
-  </body>
 
-  <audio id="audioEntrada" src="/Tung.mp3" preload="auto"></audio>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const navigationLinks = document.querySelectorAll('#navigation a');
+        const contentCards = document.querySelectorAll('.content-card');
+
+        function showContent(hash) {
+          const targetId = hash.substring(1);
+
+          contentCards.forEach((card) => {
+            if (card.id === targetId) {
+              card.classList.add('active');
+            } else {
+              card.classList.remove('active');
+            }
+          });
+
+          navigationLinks.forEach((link) => {
+            if (link.getAttribute('href') === hash) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+
+        navigationLinks.forEach((link) => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const hash = e.target.closest('a').getAttribute('href');
+            history.pushState(null, null, hash);
+            showContent(hash);
+          });
+        });
+
+        window.addEventListener('popstate', () => {
+          showContent(window.location.hash || '#intro');
+        });
+
+        showContent(window.location.hash || '#intro');
+
+        const variableCardContents = {
+          'card-var': {
+            title: 'Exemplo com `var`',
+            code: `function testVar() {\n  if (true) {\n    var x = "visível fora do if";\n  }\n  // 'x' ainda está acessível aqui!\n  console.log(x); \n}\ntestVar(); // Saída: "visível fora do if"`,
+            explanation:
+              'A variável `x` declarada com `var` "vaza" do bloco `if` porque `var` tem escopo de função, não de bloco. Isso pode causar conflitos e bugs inesperados em códigos maiores.',
+          },
+          'card-let': {
+            title: 'Exemplo com `let`',
+            code: `function testLet() {\n  if (true) {\n    let y = "visível apenas no if";\n    console.log(y); // Saída: "visível apenas no if"\n  }\n  // console.log(y); // Erro! 'y' não está definido aqui.\n}\ntestLet();`,
+            explanation:
+              'A variável `y` declarada com `let` existe apenas dentro do bloco `if` onde foi criada. Tentar acedê-la fora do bloco resulta num `ReferenceError`, o que torna o código mais seguro.',
+          },
+          'card-const': {
+            title: 'Exemplo com `const`',
+            code: `function testConst() {\n  const z = 10;\n  // z = 20; // Erro! Não pode reatribuir uma constante.\n\n  const obj = { nome: "Joao" };\n  // A propriedade do objeto pode ser mudada.\n  obj.nome = "Maria";\n  console.log(obj.nome); // Saída: "Maria"\n}\ntestConst();`,
+            explanation:
+              '`const` impede a reatribuição da variável `z`. No entanto, para objetos e arrays, o conteúdo interno pode ser modificado. A referência ao objeto é que é constante, não o seu conteúdo.',
+          },
+        };
+
+        document.querySelectorAll('.variable-card-content').forEach((card) => {
+          card.addEventListener('click', () => {
+            document
+              .querySelectorAll('.variable-card-content')
+              .forEach((c) => c.classList.remove('border-amber-400'));
+            card.classList.add('border-amber-400');
+            const details = variableCardContents[card.id];
+            const detailsContainer =
+              document.getElementById('variable-details');
+            detailsContainer.innerHTML = `
+                        <h4 class="text-lg font-semibold text-amber-300 mb-2">${details.title}</h4>
+                        <div class="code-block mb-3">${details.code}</div>
+                        <p class="text-slate-400">${details.explanation}</p>
+                    `;
+          });
+        });
+
+        const scopeCtx = document.getElementById('scopeChart').getContext('2d');
+        new Chart(scopeCtx, {
+          type: 'bar',
+          data: {
+            labels: ['var', 'let', 'const'],
+            datasets: [
+              {
+                label: 'Nível de Escopo',
+                data: [3, 2, 2],
+                backgroundColor: [
+                  'rgba(34, 211, 238, 0.6)',
+                  'rgba(217, 70, 239, 0.6)',
+                  'rgba(74, 222, 128, 0.6)',
+                ],
+                borderColor: [
+                  'rgba(34, 211, 238, 1)',
+                  'rgba(217, 70, 239, 1)',
+                  'rgba(74, 222, 128, 1)',
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  color: '#94a3b8',
+                  callback: function (value) {
+                    if (value === 3) return 'Global/Função';
+                    if (value === 2) return 'Bloco';
+                    if (value === 1) return 'Restrito';
+                    return '';
+                  },
+                },
+                grid: {
+                  color: 'rgba(255, 255, 255, 0.1)',
+                },
+              },
+              x: {
+                ticks: {
+                  color: '#94a3b8',
+                  font: {
+                    size: 14,
+                  },
+                },
+                grid: {
+                  display: false,
+                },
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    let label = context.dataset.label || '';
+                    if (label) {
+                      label += ': ';
+                    }
+                    const scope =
+                      context.raw === 3 ? 'Global ou Função' : 'Bloco';
+                    label += scope;
+                    return label;
+                  },
+                },
+              },
+            },
+          },
+        });
+
+        const truthyInput = document.getElementById('truthy-input');
+        const truthyOutput = document.getElementById('truthy-output');
+        truthyInput.addEventListener('input', (e) => {
+          const value = e.target.value;
+          let evalValue;
+
+          if (value.toLowerCase() === 'true') evalValue = true;
+          else if (value.toLowerCase() === 'false') evalValue = false;
+          else if (value.toLowerCase() === 'null') evalValue = null;
+          else if (value.toLowerCase() === 'undefined') evalValue = undefined;
+          else if (value.toLowerCase() === 'nan') evalValue = NaN;
+          else if (value === '[]') evalValue = [];
+          else if (value === '{}') evalValue = {};
+          else if (!isNaN(parseFloat(value)) && isFinite(value))
+            evalValue = parseFloat(value);
+          else evalValue = value;
+
+          if (evalValue) {
+            truthyOutput.textContent = 'Truthy';
+            truthyOutput.className = 'font-bold text-green-400';
+          } else {
+            truthyOutput.textContent = 'Falsy';
+            truthyOutput.className = 'font-bold text-red-400';
+          }
+        });
+
+        const asyncContents = {
+          'btn-callback': {
+            title: 'Padrão Callback (Antigo)',
+            explanation:
+              'Antes das Promises, usavam-se funções de callback. Múltiplas operações assíncronas levavam a um código aninhado e difícil de ler, conhecido como "Callback Hell".',
+            code: `function buscarDados(callback) {\n  setTimeout(() => {\n    // Simula um erro aleatório\n    if (Math.random() > 0.5) {\n      callback('Erro ao buscar dados!', null);\n    } else {\n      callback(null, { data: 'Dados recebidos' });\n    }\n  }, 1000);\n}\n\nbuscarDados((erro, dados) => {\n  if (erro) {\n    console.error(erro);\n  } else {\n    console.log(dados);\n  }\n});`,
+          },
+          'btn-promise': {
+            title: 'Promises (ES6)',
+            explanation:
+              'Promises oferecem uma forma mais limpa e encadeável de lidar com código assíncrono. O `.then()` trata o sucesso e o `.catch()` trata os erros, evitando o aninhamento profundo.',
+            code: `function buscarDados() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      if (Math.random() > 0.5) {\n        reject('Erro ao buscar dados!');\n      } else {\n        resolve({ data: 'Dados recebidos' });\n      }\n    }, 1000);\n  });\n}\n\nbuscarDados()\n  .then(dados => console.log(dados))\n  .catch(erro => console.error(erro));`,
+          },
+          'btn-async-await': {
+            title: 'Async/Await (ES2017 - Moderno)',
+            explanation:
+              'Uma "camada sintática" sobre as Promises que permite escrever código assíncrono que se parece com código síncrono. É a abordagem preferida hoje pela sua legibilidade e facilidade no tratamento de erros com `try/catch`.',
+            code: `function buscarDados() {\n  return new Promise((resolve, reject) => { /* ... mesmo código da Promise ... */ });\n}\n\nasync function main() {\n  try {\n    const dados = await buscarDados();\n    console.log(dados);\n  } catch (erro) {\n    console.error(erro);\n  }\n}\n\nmain();`,
+          },
+        };
+
+        const asyncTabBtns = document.querySelectorAll('.async-tab-btn');
+        const asyncContentContainer = document.getElementById('async-content');
+
+        asyncTabBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            asyncTabBtns.forEach((b) =>
+              b.classList.remove('bg-amber-500', 'text-slate-900')
+            );
+            btn.classList.add('bg-amber-500', 'text-slate-900');
+            const content = asyncContents[btn.id];
+            asyncContentContainer.innerHTML = `
+                        <h4 class="text-xl font-semibold text-amber-300 mb-2">${content.title}</h4>
+                        <p class="text-slate-400 mb-4">${content.explanation}</p>
+                        <div class="code-block">${content.code}</div>
+                    `;
+          });
+        });
+        document.getElementById('btn-async-await').click();
+      });
+    </script>
+  </body>
 </html>
-<script src="./script.js"></script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Botões Dinâmicos</title>
+  </head>
+  <body>
+    <script>
+      const alunos = [
+        { Nome: 'Pedro', Idade: 20, Nota: 10 },
+        { Nome: 'Raphael', Idade: 19, Nota: 10 },
+        { Nome: 'Bruno', Idade: 17, Nota: 10 },
+      ];
+
+      const media = (listaAlunos) => {
+        let velho = 0;
+        let cont = 0;
+        let aux = 0;
+
+        for (let i = 0; i < alunos.length; i++) {
+          aux = alunos[i].Idade;
+
+          if (aux > velho) {
+            velho = aux;
+            cont = i;
+          }
+        }
+        return alunos[cont];
+      };
+      console.log(media(alunos));
+    </script>
+  </body>
+</html>
