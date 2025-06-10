@@ -30,7 +30,7 @@
       }
       digitoAtual += key;
     }
-  }
+  } // resolva esses essa prova minuciosamente
 
   function Operacao(op) {
     if (digitoAtual === '') {
