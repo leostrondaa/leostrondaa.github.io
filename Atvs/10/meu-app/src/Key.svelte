@@ -34,10 +34,11 @@
 
 <style>
   .button-row {
+    scale: 1.2;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    width: 70%;
+    margin: 15px;
+    width: 60%;
   }
 
   .btn {

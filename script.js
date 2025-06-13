@@ -23,8 +23,9 @@ function mostrarAtividades(baseURL, inicio, fim) {
     const li = document.createElement('li');
     const a = document.createElement('a');
 
+    // atv svelte (excessao)
     if (i == 10) {
-      a.href = `https://leostrondaa.github.io/meu-app/`;
+      a.href = `https://leostrondaa.github.io/Atvs/10/meu-app`;
       a.target = '_blank';
       a.textContent = `Atividade ${i}`;
       a.classList.add('link-atividade');

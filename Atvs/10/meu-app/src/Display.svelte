@@ -14,12 +14,14 @@
 
 <style>
   .display-container {
-    width: 70%;
+    scale: 1.2;
+    width: 60%;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
   }
 
   .input-text {
-    width: 100%;
     padding: 15px;
     border: 2px solid #ddd;
     border-radius: 8px;
