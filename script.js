@@ -24,18 +24,7 @@ function mostrarAtividades(baseURL, inicio, fim) {
     const a = document.createElement('a');
 
     // atv svelte (excessao)
-    if (i == 10) {
-      a.href = `https://leostrondaa.github.io/Atvs/10/meu-app`;
-      a.target = '_blank';
-      a.textContent = `Atividade ${i}`;
-      a.classList.add('link-atividade');
-
-      li.appendChild(a);
-      lista.appendChild(li);
-
-      return;
-    }
-    if (i == 11) {
+    if (i == fim) {
       a.href = `https://leostrondaa.github.io/Atvs/10/meu-app/public/index.html`;
       a.target = '_blank';
       a.textContent = `Atividade ${i}`;
@@ -45,6 +34,17 @@ function mostrarAtividades(baseURL, inicio, fim) {
       lista.appendChild(li);
 
       return;
+    }
+    if (i == 10) {
+      a.href = `https://leostrondaa.github.io/Atvs/10/meu-app`;
+      a.target = '_blank';
+      a.textContent = `Atividade ${i}`;
+      a.classList.add('link-atividade');
+
+      li.appendChild(a);
+      lista.appendChild(li);
+
+      continue;
     }
     a.href = `${baseURL}/${i}/index.html`;
     a.target = '_blank';
