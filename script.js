@@ -35,17 +35,6 @@ function mostrarAtividades(baseURL, inicio, fim) {
 
       return;
     }
-    if (i == 10) {
-      a.href = `https://leostrondaa.github.io/Atvs/10/meu-app`;
-      a.target = '_blank';
-      a.textContent = `Atividade ${i}`;
-      a.classList.add('link-atividade');
-
-      li.appendChild(a);
-      lista.appendChild(li);
-
-      continue;
-    }
     a.href = `${baseURL}/${i}/index.html`;
     a.target = '_blank';
     a.textContent = `Atividade ${i}`;
@@ -58,7 +47,7 @@ function mostrarAtividades(baseURL, inicio, fim) {
 
 // abrir pop-up
 const chama = function () {
-  mostrarAtividades('https://leostrondaa.github.io/Atvs', 1, 11);
+  mostrarAtividades('https://leostrondaa.github.io/Atvs', 1, 10);
   document.getElementById('colSecundaria').classList.remove('d-none');
   document.getElementById('card').classList.remove('d-none');
   document.getElementById('colPrimaria').classList.replace('col-12', 'col-7');
