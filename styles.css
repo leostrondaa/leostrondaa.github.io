@@ -13,18 +13,20 @@ body {
 }
 .link-atividade {
     text-decoration: none;
-    color: black; 
-    background-color: #ffeab0; 
-    border: 2px solid #ffe396; 
-    border-radius: 10px; 
-    padding: 8px 12px; 
+    color: White; 
+    background-color:rgb(29, 29, 29); 
+    border-radius: 5px; 
     margin: 2px;
+    padding: 2px 50px; 
     display: inline-block; 
     font-weight: bold;
-    transition: 0,3s; 
+    transition: 0.2s; 
 }
 
 .link-atividade:hover {
     background-color: #ffd27f;
-    border-color: #ffcc66;
+    color: white;
+}
+#card{
+  background-color: burlywood;
 }
