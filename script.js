@@ -26,7 +26,7 @@ function mostrarAtividades(baseURL, inicio, fim) {
 
     // atv svelte (excessao)
     if (i == fim) {
-      a.href = `https://leostrondaa.github.io/Atvs/7/meu-app/navegador/index.html`;
+      a.href = `https://leostrondaa.github.io/Atvs/7/meu-app/src/navegador/index.html`;
       a.target = '_blank';
       a.textContent = `Atividade - 0${i}`;
       a.classList.add('link-atividade');
