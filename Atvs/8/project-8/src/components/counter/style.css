@@ -1,0 +1,11 @@
+.botao {
+    display: 'inline';
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border: 0;
+}
