@@ -1,12 +1,13 @@
+import { useNavigate } from 'react-router';
+import { Container } from './style';
+import FormReset from '../../components/formreset';
 
-import { Container } from './style'
-import FormReset from '../../components/formreset'
+export default function Login() {
+  const navigate = useNavigate();
 
-export default function ResetPassword() {
-
-    return (  
-        <Container>
-            <FormReset />
-        </Container>
-    )
+  return (
+    <Container>
+      <FormReset />
+    </Container>
+  );
 }
