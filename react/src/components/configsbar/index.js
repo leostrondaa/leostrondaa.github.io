@@ -1,4 +1,4 @@
-import { Container, Button, Title, ButtonOther, ButtonConfig, Input } from './style';
+import { Container, Button, Title, ButtonOther, ButtonConfig, Input, BackButton } from './style';
 import { useNavigate } from 'react-router';
 
 
@@ -16,6 +16,7 @@ export default function ConfigsBar() {
             <Title>Acessibilidade</Title>
             <Button>Tema</Button>
             <Button>Ajuda</Button>
+            <BackButton onClick={() => navigate('/home')}>Voltar</BackButton>
         </Container>
     );
 }
