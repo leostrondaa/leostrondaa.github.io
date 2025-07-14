@@ -4,6 +4,7 @@ import Login from './pages/login';
 import Home from './pages/home';
 import Signin from './pages/signin';
 import ResetPass from './pages/resetpass';
+import Configs from './pages/configs';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: '/reset',
     element: <ResetPass />,
+  },
+  {
+    path: '/configs',
+    element: <Configs />,
   },
 ]);
 
