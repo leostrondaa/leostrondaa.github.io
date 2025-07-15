@@ -1,44 +1,52 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
   max-height: 100vh;
-  display: flex;
   margin: 5px;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
   gap: 10px;
+  margin-top: 15px;
 `;
 
 export const ButtonSong = styled.button`
   height: 50px;
   width: 50px;
   border-radius: 10px;
-  background-color: orange;
+  background-color: transparent;
   border: none;
 
   display: flex;
   align-items: center;
   flex-direction: column;
   transition: transform 0.2s, background-color 0.2s, height 0.6s, width 0.2s;
-  
+
   span {
     opacity: 0;
-    color: black;
-    max-width: 120px;
-    white-space: normal;
-    word-wrap: break-word;
-    text-align: center;
-    transition: opacity 0.3s;
+    color: white;
+    transition: opacity 0.5s ease-in-out;
   }
-  h6{
+
+  h6 {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
     color: black;
   }
 
   &:hover {
     background-color: chocolate;
     height: 200px;
-    width: 200px;
+    width: 100px;
+    position: relative;
 
     span {
+      opacity: 100%;
+    }
+
+    h6 {
       opacity: 100%;
     }
 
@@ -60,24 +68,18 @@ export const ButtonSong = styled.button`
   }
 `;
 
-export const Title = styled.p`
-  color: black;
-  font-weight: bold;
-  font-size: 17px;
-  margin-left: 8px;
-`;
-export const SubTitle = styled.p`
-  color: black;
-  font-size: 17px;
-  margin-left: 8px;
-  opacity: 0;
+export const Title = styled.h2``;
+
+export const ButtonOther = styled.button`
+  background-color: rgba(100, 100, 100, 0.3);
+  color: white;
+  border: none;
+  padding: 7px 10px;
+  border-radius: 10px;
+  margin: 5px;
+  margin-bottom: 15px;
 
   &:hover {
-    opacity: 100;
+    background-color: dimgrey;
   }
-`;
-export const Time = styled.p`
-  color: white;
-  font-size: 17px;
-  margin-left: 8px;
 `;

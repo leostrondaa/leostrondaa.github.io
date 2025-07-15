@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import fundo from '../../images/deftones.jpg';
+import fundo from '../../images/songs/deftones.jpg';
 
 export const Container = styled.div`
   height: 100vh;
@@ -111,12 +111,17 @@ export const ProgressContainer = styled.div`
   background: white;
   border-radius: 10px;
   cursor: pointer;
-  `;
-  
-  export const ProgressFill = styled.div`
+`;
+
+export const ProgressFill = styled.div`
   width: 30%;
   height: 100%;
   background: black;
   border-radius: 10px;
   transition: width 0.2s ease;
+`;
+
+export const Time = styled.p`
+  color: black;
+  font-size: 17px;
 `;

@@ -5,17 +5,16 @@ import {
   NextButton,
   PreviousButton,
   ContainerPlayer,
-  InputProgress,
-  BarraContainer,
   ContainerBar,
   ProgressContainer,
   ProgressFill,
+  Time,
 } from './style';
 import React, { useState } from 'react';
-import playIcon from '../../images/play.png';
-import pauseIcon from '../../images/pause.png';
-import nextButtonIcon from '../../images/next-button.png';
-import previousButtonIcon from '../../images/previous.png';
+import playIcon from '../../images/others/play.png';
+import pauseIcon from '../../images/others/pause.png';
+import nextButtonIcon from '../../images/others/next-button.png';
+import previousButtonIcon from '../../images/others/previous.png';
 
 export default function SongBar() {
   const [Playing, setPlaying] = useState(false);
@@ -51,6 +50,7 @@ export default function SongBar() {
         <ProgressContainer>
           <ProgressFill></ProgressFill>
         </ProgressContainer>
+        <Time>00:00</Time>
       </ContainerBar>
     </Container>
   );

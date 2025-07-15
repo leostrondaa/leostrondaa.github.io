@@ -30,5 +30,24 @@ export const Submit = styled.input.attrs({ type: 'submit' })`
 `;
 
 export const P = styled.p`
+  color: grey;
+`;
+
+export const BackButton = styled.button`
+  color: white;
+  background-color: rgba(100, 100, 100, 0.3);
+  color: white;
+  border: none;
+  margin-top: 10px;
+  padding: 9px 15px;
+  width: 100%;
+  border-radius: 7px;
+
+  &:hover {
+    background-color: dimgrey;
+  }
+`;
+
+export const Title = styled.h1`
   color: white;
 `;

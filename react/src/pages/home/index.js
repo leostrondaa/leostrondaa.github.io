@@ -1,6 +1,7 @@
 import HomeBar from '../../components/homebar';
 import SongBar from '../../components/songbar';
-import Catalog from '../../components/catalog';
+import DiscoverCatalog from '../../components/discovercatalog';
+import ArtistCatalog from '../../components/artistcatalog';
 import { Container, Section } from './style';
 
 export default function Home() {
@@ -11,7 +12,8 @@ export default function Home() {
       </Section>
       <Section color="black">
         <HomeBar />
-        <Catalog></Catalog>
+        <DiscoverCatalog></DiscoverCatalog>
+        <ArtistCatalog></ArtistCatalog>
       </Section>
     </Container>
   );

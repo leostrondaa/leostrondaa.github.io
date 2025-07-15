@@ -16,7 +16,7 @@ export const Input = styled.input`
   border-radius: 7px;
 `;
 export const Submit = styled.input.attrs({ type: 'submit' })`
-  background-color: rgba(100, 100, 100, 0.3);
+  background-color: chocolate;
   color: white;
   border: none;
   margin-top: 10px;
@@ -30,4 +30,19 @@ export const Submit = styled.input.attrs({ type: 'submit' })`
 `;
 export const P = styled.p`
   color: white;
+`;
+
+export const BackButton = styled.button`
+  color: white;
+  background-color: rgba(100, 100, 100, 0.3);
+  color: white;
+  border: none;
+  margin-top: 10px;
+  padding: 9px 15px;
+  width: 100%;
+  border-radius: 7px;
+
+  &:hover {
+    background-color: dimgrey;
+  }
 `;

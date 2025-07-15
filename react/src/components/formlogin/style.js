@@ -39,6 +39,10 @@ export const Reset = styled.a`
   }
 `;
 
+export const Title = styled.h1`
+  margin-bottom: 40px;
+`;
+
 export const Create = styled.button`
   background-color: rgba(100, 100, 100, 0.3);
   color: white;

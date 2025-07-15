@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   max-height: 100vh;
@@ -34,6 +34,10 @@ export const Input = styled.input`
   margin: 5px;
   border: none;
   border-radius: 10px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 export const ButtonOther = styled.button`
@@ -63,5 +67,9 @@ export const ButtonConfig = styled.button`
 
   &:hover {
     background-color: dimgrey;
+  }
+
+  @media (max-width: 800px) {
+    top: 125%;
   }
 `;
