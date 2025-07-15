@@ -16,21 +16,72 @@ import pauseIcon from '../../images/others/pause.png';
 import nextButtonIcon from '../../images/others/next-button.png';
 import previousButtonIcon from '../../images/others/previous.png';
 
+import fundo from '../../images/songs/limp.jpg';
+import fundo2 from '../../images/songs/slipknot.jpg';
+import fundo3 from '../../images/songs/system.jpg';
+import fundo4 from '../../images/songs/master.jpg';
+import fundo5 from '../../images/songs/hardwired.jpg';
+import fundo6 from '../../images/songs/sabrina.jpg';
+
 export default function SongBar() {
   const [Playing, setPlaying] = useState(false);
   const [Next, setNext] = useState(false);
   const [Previous, setPrevious] = useState(false);
-  const [Song, setSong] = useState({
-    name: 'My Own Summer',
-    artist: 'Deftones',
-    Url: 'url.mp3',
-  });
-  const songs = [{ name: 'Música 1', Url: 'musica1.mp3' }];
+ 
+
+  const song = [
+    {
+      id: 1,
+      title: "Take a Look Around",
+      artist: "Limp Bizkit",
+      duration: "03:57",
+      cover: fundo,
+    },
+    {
+      id: 2,
+      title: "People=Shit",
+      artist: "Slipknot",
+      duration: "03:35",
+      cover: fundo2,
+    },
+    {
+      id: 3,
+      title: "Mezmerize",
+      artist: "System of a Down",
+      duration: "04:00",
+      cover: fundo3,
+    },
+    {
+      id: 4,
+      title: "Lepper Messiah",
+      artist: "Metallica",
+      duration: "05:00",
+      cover: fundo4,
+    },
+    {
+      id: 5,
+      title: "Spit Out the Bone",
+      artist: "Metallica",
+      duration: "04:30",
+      cover: fundo5,
+    },
+    {
+      id: 3,
+      title: "Espresso",
+      artist: "Sabrina Carpenter",
+      duration: "03:10",
+      cover: fundo6,
+    },
+  ];
 
   return (
     <Container>
       <h2>Em alta</h2>
-      <BlockSong />
+
+      <BlockSong>
+        <img src={fundo} />
+      </BlockSong>
+
       <ContainerPlayer>
         <PreviousButton onClick={() => setNext(!Next)}>
           <img src={previousButtonIcon} />
@@ -52,6 +103,7 @@ export default function SongBar() {
         </ProgressContainer>
         <Time>00:00</Time>
       </ContainerBar>
+
     </Container>
   );
 }

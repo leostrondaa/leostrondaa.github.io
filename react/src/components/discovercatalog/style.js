@@ -65,6 +65,10 @@ export const ButtonSong = styled.button`
     background-size: cover;
     border-radius: 10px;
     background-color: black;
+
+
+
+    
   }
 `;
 

@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.2s, background-color 0.2s, height 0.6s, width 0.2s;
 
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
@@ -34,13 +35,12 @@ export const ContainerBar = styled.div`
 `;
 
 export const BlockSong = styled.div`
-  width: 90%;
-  height: 50%;
+img{
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
-  margin: 20px;
-  background-image: url(${fundo});
   background-size: cover;
-  box-shadow: 0px 0px 15px 3px black;
+}
 `;
 export const PlayButton = styled.button`
   width: 100px;

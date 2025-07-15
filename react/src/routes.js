@@ -5,6 +5,7 @@ import Home from './pages/home';
 import Signin from './pages/signin';
 import ResetPass from './pages/resetpass';
 import Configs from './pages/configs';
+import Artist from './pages/artist';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: '/configs',
     element: <Configs />,
+  },
+  {
+    path: '/artist',
+    element: <Artist />,
   },
 ]);
 

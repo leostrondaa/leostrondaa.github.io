@@ -16,41 +16,44 @@ export const PerfilButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100px;
-  height: 100px;
+  width: 170px;
+  height: 200px; 
   border: none;
-  border-radius: 50%;
   background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+
+  img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; 
+    border-radius: 50%;
+    background-color: black;
+    transition: all 0.3s ease-in-out;
+  }
 
   h6 {
-    opacity: 0;
+    opacity: 100;
     color: white;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
   }
 
   &:hover {
-    h6 {
-      opacity: 100%;
-      transition: opacity 0.5s ease-in-out;
-    }
-
     img {
-      height: 120px;
-      width: 120px;
+      width: 170px;
+      height: 170px;
     }
-  }
-
-  img {
-    height: 100px;
-    width: 100px;
-    background-size: cover;
-    border-radius: 50%;
-    background-color: black;
-    transition: height 0.3s ease-in-out, width 0.3s ease-in-out;
   }
 `;
 
 export const Title = styled.h2`
-  margin-top: 35px;
+  margin-top: 20px;
 `;
 
 export const ButtonOther = styled.button`
