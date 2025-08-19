@@ -27,13 +27,14 @@ export const ButtonSong = styled.button`
   span {
     opacity: 0;
     color: white;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
   }
 
   h6 {
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
     color: black;
+    
   }
 
   &:hover {
@@ -66,9 +67,6 @@ export const ButtonSong = styled.button`
     border-radius: 10px;
     background-color: black;
 
-
-
-    
   }
 `;
 

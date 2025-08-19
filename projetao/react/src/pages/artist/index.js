@@ -10,9 +10,9 @@ export default function Home() {
     return (
         <Container>
             <Section>
+                <ImageArtist artist={artist}></ImageArtist>
             </Section>
             <Section color="black">
-                <ImageArtist artist={artist}></ImageArtist>
             </Section>
         </Container>
     );

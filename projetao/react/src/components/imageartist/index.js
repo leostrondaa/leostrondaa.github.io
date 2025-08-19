@@ -7,6 +7,7 @@ export default function ImageArtist({artist}) {
   return (
     <Container>
         <img src={artist?.cover} alt={artist?.name} />
+        <h1>{artist?.artist}</h1>
     </Container>
   );
 }

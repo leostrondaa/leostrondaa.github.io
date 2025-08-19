@@ -13,5 +13,4 @@ export const Container = styled.div`
 
 export const Section = styled.div`
   background-color: ${(props) => props.color || 'orange'};
-  padding: 30px;
 `;

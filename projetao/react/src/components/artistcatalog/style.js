@@ -30,7 +30,7 @@ export const PerfilButton = styled.button`
     object-fit: cover; 
     border-radius: 50%;
     background-color: black;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   h6 {
@@ -41,13 +41,16 @@ export const PerfilButton = styled.button`
     margin: 0;
     text-align: center;
     width: 100%;
-    transition: opacity 0.5s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   &:hover {
     img {
-      width: 170px;
-      height: 170px;
+      opacity: 50%;
+    }
+    h6{
+      opacity: 50%;
+
     }
   }
 `;
