@@ -1,14 +1,17 @@
 import { Container, ButtonSong, ButtonContainer, ButtonOther } from './style';
 import { useNavigate } from 'react-router';
+import React, { useState } from 'react';
+import SongBar from '../songbar'; 
 import fundo from '../../images/songs/limp.jpg';
 import fundo2 from '../../images/songs/slipknot.jpg';
 import fundo3 from '../../images/songs/system.jpg';
 import fundo4 from '../../images/songs/master.jpg';
 import fundo5 from '../../images/songs/hardwired.jpg';
-import fundo6 from '../../images/songs/sabrina.jpg';
+import fundo6 from '../../images/songs/sabrina.png';
 
 export default function DiscoverCatalog() {
   const navigate = useNavigate();
+  const [currentSong, setCurrentSong] = useState(null);
 
   const song = [
     {
@@ -56,11 +59,13 @@ export default function DiscoverCatalog() {
   ];
 
   return (
+    <>
+
     <Container>      
       <h2>Descubra</h2>
       <ButtonContainer>
       {song.map((song) => (
-          <ButtonSong key={song.id}>
+        <ButtonSong key={song.id} onClick={() => navigate('/home', { state: { song } }) }>
             <img src={song.cover} alt={song.title} />
             <h6>{song.title}</h6>
             <span>{song.artist}</span>
@@ -69,5 +74,6 @@ export default function DiscoverCatalog() {
         ))}
       </ButtonContainer>
     </Container>
+    </>
   );
 }

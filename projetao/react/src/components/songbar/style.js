@@ -36,10 +36,10 @@ export const ContainerBar = styled.div`
 
 export const BlockSong = styled.div`
 img{
-  width: 100%;
-  height: 100%;
+  width: 400px;
+  height: 400px;
   border-radius: 20px;
-  background-size: cover;
+  object-fit: cover;
 }
 `;
 export const PlayButton = styled.button`

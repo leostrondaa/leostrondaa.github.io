@@ -2,7 +2,7 @@ import ImageArtist from '../../components/imageartist';
 import { Container, Section } from './style';
 import { useLocation } from 'react-router-dom';
 
-export default function Home() {
+export default function Artist() {
 
     const { state } = useLocation();
     const artist = state?.artist; 
