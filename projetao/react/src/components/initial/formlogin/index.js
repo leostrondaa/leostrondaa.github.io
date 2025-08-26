@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, P } from './style';
 import { useNavigate } from 'react-router';
 import { api } from '../../../services/api';
+import { userStore } from '../../../services/userStore';
 
 import './style';
 import { Input, Submit, Create, Reset, Title } from './style';
@@ -13,13 +14,16 @@ export default function FormLogin() {
 
   const Login = async (e) => {
     e.preventDefault();
+
     try {
       const response = await api.login(email, password);
+      userStore.setUser(response.data.user);
       navigate('/home');
     } catch (error) {
       alert('Email ou senha incorretos');
     }
   };
+
   return (
     <Container>
       <Title>Bem vindo de volta</Title>

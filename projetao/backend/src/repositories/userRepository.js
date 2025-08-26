@@ -22,14 +22,14 @@ class UserRepository {
   }
 
   findByEmail(email) {
-    return users.find((user) => user.email === email);
+    return users.find((user) => user.email.toLowerCase().trim() === email);
   }
 
   update(id, updateUser) {
-    const index = usewrs.findIndex((user) => user.id === id);
+    const index = users.findIndex((user) => user.id === id);
 
     if (index !== -1) {
-      users[index] = { ...users[index], ...updatedUser, id: id };
+      users[index] = { ...users[index], ...updateUser, id: id };
       return users[index];
     }
     return null;

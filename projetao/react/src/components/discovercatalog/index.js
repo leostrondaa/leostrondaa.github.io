@@ -50,7 +50,7 @@ export default function DiscoverCatalog() {
       cover: fundo5,
     },
     {
-      id: 3,
+      id: 6,
       title: "Espresso",
       artist: "Sabrina Carpenter",
       duration: "03:10",
