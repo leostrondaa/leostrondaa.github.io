@@ -11,7 +11,7 @@ export default function ConfigsBar() {
             <Button>Geral</Button>
             <Button>Seguranca</Button>
             <Title>Conta</Title>
-            <Button>Perfil</Button>
+            <Button onClick={() => navigate('/profile')}>Perfil</Button>
             <Button>Dados</Button>
             <Title>Acessibilidade</Title>
             <Button>Tema</Button>

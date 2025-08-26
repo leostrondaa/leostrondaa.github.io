@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, P } from './style';
 import { useNavigate } from 'react-router';
-
+import { api } from '../../../services/api';
 import './style';
 import { Input, Submit, BackButton } from './style';
 
@@ -11,9 +11,19 @@ export default function FormSignin() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const Create = (e) => {
-    if (name && email && password) {
-      navigate('/home');
+  const Create = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await api.createUser({
+        name: name,
+        email: email,
+        password: password,
+      });
+
+      navigate('/');
+    } catch (error) {
+      alert('Erro ao criar conta. Tente outro email.');
     }
   };
 

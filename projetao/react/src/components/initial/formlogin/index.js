@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, P } from './style';
 import { useNavigate } from 'react-router';
+import { api } from '../../../services/api';
 
 import './style';
 import { Input, Submit, Create, Reset, Title } from './style';
@@ -10,12 +11,15 @@ export default function FormLogin() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const Login = (e) => {
-    if (email && password) {
+  const Login = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await api.login(email, password);
       navigate('/home');
+    } catch (error) {
+      alert('Email ou senha incorretos');
     }
   };
-
   return (
     <Container>
       <Title>Bem vindo de volta</Title>
