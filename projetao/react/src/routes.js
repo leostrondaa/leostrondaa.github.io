@@ -7,6 +7,7 @@ import ResetPass from './pages/resetpass';
 import Configs from './pages/configs';
 import Artist from './pages/artist';
 import Profile from './pages/profile';
+import Delete from './pages/delete';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: '/profile',
     element: <Profile />,
+  },
+  {
+    path: '/delete',
+    element: <Delete />,
   },
 ]);
 

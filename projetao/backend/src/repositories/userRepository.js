@@ -37,7 +37,7 @@ class UserRepository {
 
   delete(id) {
     const initialLength = users.length;
-    users = users.flter((user) => user.id !== id);
+    users = users.filter((user) => user.id !== id);
     return users.length < initialLength;
   }
 }
