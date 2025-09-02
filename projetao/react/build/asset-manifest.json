@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ad4bbdcc.css",
+    "main.js": "/static/js/main.fb8eed76.js",
+    "static/media/chemical.jpg": "/static/media/chemical.30e13d00cc9947a40e3a.jpg",
+    "static/media/sabrina.png": "/static/media/sabrina.01f1383686d6c3740553.png",
+    "static/media/arctic.jpg": "/static/media/arctic.a877553a390f48962079.jpg",
+    "static/media/deftones.jpg": "/static/media/deftones.1ddf56e300c2a452a256.jpg",
+    "static/media/master.jpg": "/static/media/master.1bd17a648780abaeee28.jpg",
+    "static/media/linkin.jpg": "/static/media/linkin.eea8cc86f6a4f4682afe.jpg",
+    "static/media/hardwired.jpg": "/static/media/hardwired.9ec11f69fb633f8d2ae7.jpg",
+    "static/media/fundo2.jpg": "/static/media/fundo2.811777e5576c35a03dea.jpg",
+    "static/media/limp.jpg": "/static/media/limp.3e1fd93ce6dd947e4086.jpg",
+    "static/media/slipknot.jpg": "/static/media/slipknot.d173e327e7ae3208a354.jpg",
+    "index.html": "/index.html",
+    "main.ad4bbdcc.css.map": "/static/css/main.ad4bbdcc.css.map",
+    "main.fb8eed76.js.map": "/static/js/main.fb8eed76.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad4bbdcc.css",
+    "static/js/main.fb8eed76.js"
+  ]
+}

@@ -1,4 +1,4 @@
-import { Button, Container, PerfilContainer, Title, P, Submit } from './style';
+import { Button, BackButton, Container, PerfilContainer, Title, P, Submit } from './style';
 import { useNavigate } from 'react-router';
 import { api } from '../../services/api';
 import React, { useState } from 'react';
@@ -44,6 +44,7 @@ export default function ProfileInf() {
       </P>
 
       <Button onClick={() => Delete()}>Solicitar exclusão</Button>
+      <BackButton onClick={() => navigate('/profile')}>voltar</BackButton>
     </Container>
   );
 }

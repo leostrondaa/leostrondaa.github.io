@@ -62,7 +62,7 @@ export default function ProfileInf() {
               setMostrar(false);
             }}
           >
-            Edit conta
+            Editar conta
           </Button>
           <Button onClick={() => navigate(`/delete`)}>Excluir conta</Button>
           <Button onClick={() => navigate(`/configs`)}>Voltar</Button>
@@ -79,7 +79,7 @@ export default function ProfileInf() {
             <input
               type="text"
               placeholder="Digite seu novo nome"
-              value={userData.name}
+              value={''}
               onChange={(e) =>
                 setUserData({ ...userData, name: e.target.value })
               }
@@ -89,7 +89,7 @@ export default function ProfileInf() {
             <input
               type="password"
               placeholder="Digite sua nova senha"
-              defaultValue={userData.password || ''}
+              defaultValue={''}
               onChange={(e) =>
                 setUserData({ ...userData, password: e.target.value })
               }

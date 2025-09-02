@@ -13,30 +13,23 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 50%;
+  width: 80%;
   height: 40px;
   border: none;
   border-radius: 10px;
   color: black;
   margin: 5px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
 
   &:hover {
     opacity: 50%;
   }
 `;
 export const Submit = styled.input.attrs({ type: 'submit' })`
-  width: 50%;
+  width: 80%;
   height: 40px;
   border: none;
   border-radius: 10px;
   color: black;
-  margin: 5px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
 
   &:hover {
     opacity: 50%;
@@ -79,7 +72,7 @@ export const PerfilContainer = styled.div`
     
     input{
        outline: none;
-       width: 50%;
+       width: 80%;
        height: 40px;
        margin-bottom: 20px;
        border: none;

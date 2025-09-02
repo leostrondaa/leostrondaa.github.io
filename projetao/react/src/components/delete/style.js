@@ -12,12 +12,24 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 20%;
+  width: 30%;
   height: 40px;
   border: none;
   border-radius: 10px;
   color: black;
   margin-top: 30%;
+
+  &:hover {
+    opacity: 50%;
+  }
+`;
+export const BackButton = styled.button`
+  width: 30%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  margin-top: 10px;
 
   &:hover {
     opacity: 50%;

@@ -1,4 +1,3 @@
-
 let userData = null;
 
 export const userStore = {
